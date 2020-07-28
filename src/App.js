@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 import './App.css';
 import { userRef } from './firebase/firebase'
+import signUp from './api/signUp';
 
 function App() {
   useEffect(() => {
@@ -12,22 +13,15 @@ function App() {
     })
 
   }, [])
+
+  const OnsingUp = () => {
+    const result = signUp('newone@gmail.com', 'password')
+    console.log(result)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={() => OnsingUp()}>SignUp</button>
     </div>
   );
 }
