@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import './App.css';
 import signUp from './api/signUp';
@@ -7,6 +7,7 @@ import SignUp from './components/SignUp'
 import SignIn from './components/SignIn';
 import Feed from './components/Feed';
 import Navbar from './components/Reusable/Navbar'
+import { firebaseApp } from './firebase/firebase';
 function App() {
   // useEffect(() => {
 
@@ -16,6 +17,20 @@ function App() {
   //   })
 
   // }, [])
+
+  const [stage, setStage] = useState('')
+
+  firebaseApp.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      // User is signed in.
+      console.log(user.uid);
+      setStage('loggedIn')
+    } else {
+      // No user is signed in.
+      console.log('user is not logged in');
+      setStage('NotloggedIn')
+    }
+  });
 
   const OnsingUp = () => {
     const result = signIn('rjoshi055@gmail.com', 'password')
@@ -28,10 +43,13 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
-      <SignUp />
+      <Navbar stage={stage} />
+      {stage === 'loggedIn' && <Feed />}
+      {stage === 'NotloggedIn' && <SignUp />}
+
+
       <button onClick={() => Onsing()}>SignUp</button>
-      <Feed />
+
       <button onClick={() => OnsingUp()}>signin</button>
     </div>
   );

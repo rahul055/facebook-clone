@@ -1,6 +1,6 @@
 import { firebaseApp, userRef } from '../firebase/firebase'
 
-export default (email, password, firstname, lastname) => {
+export default ({ email, password, firstname, lastname }) => {
     if (!firstname || !lastname) {
         return false
     }
@@ -17,6 +17,6 @@ export default (email, password, firstname, lastname) => {
             return true
         }).catch((err) => {
             console.log(err)
-            return err
+            return false
         })
 }
