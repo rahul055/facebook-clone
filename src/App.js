@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
-
+import 'materialize-css/dist/css/materialize.min.css';
 import './App.css';
 import signUp from './api/signUp';
 import signIn from './api/signIn';
-
+import SignUp from './components/SignUp'
+import SignIn from './components/SignIn';
+import Feed from './components/Feed';
+import Navbar from './components/Reusable/Navbar'
 function App() {
   // useEffect(() => {
 
@@ -25,8 +28,11 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={() => OnsingUp()}>signin</button>
+      <Navbar />
+      <SignUp />
       <button onClick={() => Onsing()}>SignUp</button>
+      <Feed />
+      <button onClick={() => OnsingUp()}>signin</button>
     </div>
   );
 }

@@ -3,10 +3,13 @@ import { TextInput } from 'react-materialize'
 
 function SignIn() {
     return (
-        <div>
+        <div style={{ display: 'flex', justifyContent: 'center' }} >
             <div className='outerBox'>
                 <TextInput
-                    label="First Name"
+                    label="Email"
+                />
+                <TextInput
+                    label="Password"
                 />
             </div>
         </div>

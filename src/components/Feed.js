@@ -6,9 +6,9 @@ function Feed() {
         <div>
             <Container>
                 <Row>
-                    <Col>Profile</Col>
-                    <Col>feed</Col>
-                    <Col>empty</Col>
+                    <Col s={12} m={4}>Profile</Col>
+                    <Col s={12} m={8}>feed</Col>
+
                 </Row>
             </Container>
         </div>
