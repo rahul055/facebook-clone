@@ -18,7 +18,8 @@ function App() {
 
   // }, [])
 
-  const [stage, setStage] = useState('')
+  const [stage, setStage] = useState('');
+  const [singintoggle, setSignintoggle] = useState('si')
 
   firebaseApp.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -40,14 +41,18 @@ function App() {
     const result = signUp('rjoshi055@gmail.com', 'password', 'rahul', 'jo')
     console.log(result)
   }
+  const onChangeToggle = (value) => {
+    setSignintoggle(value)
+    console.log(singintoggle)
+  }
 
   return (
     <div className="App">
       <Navbar stage={stage} />
       {stage === 'loggedIn' && <Feed />}
-      {stage === 'NotloggedIn' && <SignUp />}
 
-
+      {stage === 'NotloggedIn' && singintoggle === "si" && <SignIn togglesi={onChangeToggle} />}
+      {stage === 'NotloggedIn' && singintoggle === "su" && <SignUp togglesu={onChangeToggle} />}
       <button onClick={() => Onsing()}>SignUp</button>
 
       <button onClick={() => OnsingUp()}>signin</button>

@@ -3,7 +3,7 @@ import { TextInput } from 'react-materialize'
 import '../App.css'
 import signUp from '../api/signUp'
 
-function SignUp() {
+function SignUp(props) {
     const [data, setData] = useState({
         firstname: '',
         lastname: '',
@@ -28,7 +28,7 @@ function SignUp() {
         <div style={{ display: 'flex', justifyContent: 'center' }} >
 
             <div className='outerBox'>
-
+                <h4>Sign Up</h4>
                 <TextInput
                     label="FirstName"
                     onChange={(e) => onChangeText('firstname', e.target.value)}
@@ -46,6 +46,7 @@ function SignUp() {
                     onChange={(e) => onChangeText('password', e.target.value)}
                 />
                 <button onClick={onSubmit}>Create</button>
+                <p>Already have an account ? <span onClick={() => props.togglesu("si")} >Sign in</span></p>
             </div>
         </div>
     )
