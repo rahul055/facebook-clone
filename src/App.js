@@ -1,27 +1,32 @@
 import React, { useEffect } from 'react';
 
 import './App.css';
-import { userRef } from './firebase/firebase'
 import signUp from './api/signUp';
+import signIn from './api/signIn';
 
 function App() {
-  useEffect(() => {
+  // useEffect(() => {
 
-    userRef.push({
-      email: 'rj.test@gmail.com',
-      password: '12345'
-    })
+  //   userRef.push({
+  //     email: 'rj.test@gmail.com',
+  //     password: '12345'
+  //   })
 
-  }, [])
+  // }, [])
 
   const OnsingUp = () => {
-    const result = signUp('newone@gmail.com', 'password')
+    const result = signIn('rjoshi055@gmail.com', 'password')
+    console.log(result)
+  }
+  const Onsing = () => {
+    const result = signUp('rjoshi055@gmail.com', 'password', 'rahul', 'jo')
     console.log(result)
   }
 
   return (
     <div className="App">
-      <button onClick={() => OnsingUp()}>SignUp</button>
+      <button onClick={() => OnsingUp()}>signin</button>
+      <button onClick={() => Onsing()}>SignUp</button>
     </div>
   );
 }
